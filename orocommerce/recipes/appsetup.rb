@@ -1,5 +1,10 @@
 node[:deploy].each do |app_name, deploy|
-  apt_package ['nodejs','npm'] do
+  
+  apt_package 'nodejs' do
+    action :install
+  end
+
+  apt_package 'npm' do
     action :install
   end
 
