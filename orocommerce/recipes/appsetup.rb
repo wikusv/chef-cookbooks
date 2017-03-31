@@ -1,12 +1,7 @@
 node[:deploy].each do |app_name, deploy|
-  script "install_node_js" do
-    interpreter "bash"
-    user "root"
-    code <<-EOH
-     apt-get install nodejs 
-     apt-get install npm 
-     EOH
-  end  
+  apt_package ['nodejs','npm'] do
+    action :install
+  end
 
   script "install_composer" do
     interpreter "bash"
